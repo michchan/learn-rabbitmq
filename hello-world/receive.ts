@@ -10,7 +10,7 @@ amqp.connect('amqp://rabbitmq', (error0, connection) => {
       throw error1;
     }
     // * Same name with the queue in send.ts
-    var queue = 'hello';
+    const queue = 'hello';
 
     channel.assertQueue(queue, {
       durable: false

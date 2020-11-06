@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "send": "ts-node send.ts",
-    "receive": "ts-node receive.ts"
+    "receive": "ts-node receive.ts",
+    "start": "npm run receive"
   },
   "author": "",
   "license": "ISC",
