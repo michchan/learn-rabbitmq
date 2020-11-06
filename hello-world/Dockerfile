@@ -5,3 +5,5 @@ COPY package.json .
 RUN npm install
 # Copy all files
 COPY . .
+
+CMD ["npm", "run", "receive"]
