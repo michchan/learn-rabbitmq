@@ -13,14 +13,15 @@ amqp.connect('amqp://rabbitmq', (error0, connection) => {
     }
     // To send, we must declare a queue for us to send to; then we can publish a message to the queue:
     const queue = QUEUE_NAME;
-    const msg = 'Hello world';
+    const msg = process.argv.slice(2).join(' ') || 'Hello World!';
 
-    // This makes sure the queue is declared before attempting to consume from it
     channel.assertQueue(queue, {
-      durable: false
+      durable: true
     });
 
-    channel.sendToQueue(queue, Buffer.from(msg));
+    channel.sendToQueue(queue, Buffer.from(msg), {
+      persistent: true
+    });
     console.log(" [x] Sent %s", msg);
   });
 

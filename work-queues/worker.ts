@@ -13,13 +13,20 @@ amqp.connect('amqp://rabbitmq', (error0, connection) => {
     // * Same name with the queue in send.ts
     const queue = QUEUE_NAME;
 
+    // This makes sure the queue is declared before attempting to consume from it
     channel.assertQueue(queue, {
-      durable: false
+      durable: true
     });
 
     console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
+
     channel.consume(queue, msg => {
+      const secs = msg.content.toString().split('.').length - 1;
+    
       console.log(" [x] Received %s", msg.content.toString());
+      setTimeout(function() {
+        console.log(" [x] Done");
+      }, secs * 1000);
     }, {
       // automatic acknowledgment mode,
       // see https://www.rabbitmq.com/confirms.html for details
