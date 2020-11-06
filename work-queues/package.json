@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "worker": "ts-node worker",
+    "new_task": "ts-node new_task",
+    "start": "npm run worker"
   },
   "author": "",
   "license": "ISC",

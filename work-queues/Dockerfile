@@ -6,4 +6,4 @@ RUN npm install
 # Copy all files
 COPY . .
 
-CMD ["npm", "run", "receive"]
+CMD ["npm", "start"]
