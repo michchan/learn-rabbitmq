@@ -17,10 +17,13 @@ amqp.connect('amqp://rabbitmq', (error0, connection) => {
 
     // This makes sure the queue is declared before attempting to consume from it
     channel.assertQueue(queue, {
-      durable: false
+      durable: true
     });
 
-    channel.sendToQueue(queue, Buffer.from(msg));
+    // Make our messages as persistent after a RabbitMQ node restart
+    channel.sendToQueue(queue, Buffer.from(msg), {
+      persistent: true
+    });
     console.log(" [x] Sent %s", msg);
   });
 

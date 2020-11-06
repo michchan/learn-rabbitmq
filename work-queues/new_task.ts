@@ -16,10 +16,15 @@ amqp.connect('amqp://rabbitmq', (error0, connection) => {
     const msg = process.argv.slice(2).join(' ') || 'Hello World!';
 
     channel.assertQueue(queue, {
+      // Make sure that the queue will survive when a RabbitMQ node restart
       durable: true
     });
 
     channel.sendToQueue(queue, Buffer.from(msg), {
+      // Make our messages as persistent after a RabbitMQ node restart
+      // But it doesn't guarantee the messages will always be kept.
+      // There is still a short window of down time.
+      // Stronger guarantee: https://www.rabbitmq.com/confirms.html
       persistent: true
     });
     console.log(" [x] Sent %s", msg);
