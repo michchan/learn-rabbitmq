@@ -17,6 +17,8 @@ amqp.connect('amqp://rabbitmq', (error0, connection) => {
     channel.assertQueue(queue, {
       durable: true
     });
+    // This tells RabbitMQ not to give more than one message to a worker at a time
+    channel.prefetch(1)
 
     console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
 
