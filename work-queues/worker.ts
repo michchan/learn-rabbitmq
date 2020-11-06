@@ -30,7 +30,8 @@ amqp.connect('amqp://rabbitmq', (error0, connection) => {
     }, {
       // automatic acknowledgment mode,
       // see https://www.rabbitmq.com/confirms.html for details
-      noAck: true
+      // Turn on Message Acknowledgement mode to prevent message lost.
+      noAck: false
     });
   });
 });
