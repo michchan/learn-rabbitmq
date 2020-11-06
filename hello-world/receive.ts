@@ -20,6 +20,8 @@ amqp.connect('amqp://rabbitmq', (error0, connection) => {
     console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
     channel.consume(queue, msg => {
       console.log(" [x] Received %s", msg.content.toString());
+      // Acknowledgement of message processed
+      channel.ack(msg);
     }, {
       // automatic acknowledgment mode,
       // see https://www.rabbitmq.com/confirms.html for details
