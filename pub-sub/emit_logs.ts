@@ -1,7 +1,7 @@
 import amqp = require('amqplib/callback_api');
 import { EXCHANGE_NAME, EXCHANGE_TYPE } from './constants';
 
-amqp.connect('amqp://localhost', (error0, connection) => {
+amqp.connect('amqp://rabbitmq', (error0, connection) => {
   if (error0) {
     throw error0;
   }
