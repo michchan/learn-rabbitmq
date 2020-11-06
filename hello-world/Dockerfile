@@ -1,11 +1,7 @@
-FROM rabbitmq:3-management-alpine
+FROM node:12-alpine
 
-# Start rabbitmq server
-RUN rabbitmq-server -detached
-
-WORKDIR /usr/app
-COPY ./package.json ./
-RUN apk add --update nodejs npm
+WORKDIR '/app'
+COPY package.json .
 RUN npm install
 # Copy all files
-COPY ./ ./
+COPY . .
