@@ -19,7 +19,7 @@ amqp.connect('amqp://rabbitmq', (error0, connection) => {
       // Make sure that the queue will survive when a RabbitMQ node restart
       durable: true
     });
-
+    // "default" exchange
     channel.sendToQueue(queue, Buffer.from(msg), {
       // Make our messages as persistent after a RabbitMQ node restart
       // But it doesn't guarantee the messages will always be kept.
