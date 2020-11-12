@@ -1,0 +1,5 @@
+export const EXCHANGE_NAME = 'direct_logs'
+export const EXCHANGE_TYPE = 'direct'
+export const SEVERITY_INFO = 'info'
+export const SEVERITY_WARN = 'warn'
+export const SEVERITY_ERROR = 'error'

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": ""
+    "emit": "ts-node emit_logs_direct",
+    "receive": "ts-node receive_logs_direct",
+    "start": "npm run receive warning error > logs_from_rabbit.log"
   },
   "author": "",
   "license": "ISC",
